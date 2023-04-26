@@ -1,4 +1,4 @@
-# smdmsyracuse
+#CIS 600 
 Social Media and Data Mining
 
 ## Screenshots
