@@ -1,4 +1,4 @@
-#CIS 600 
+CIS 600 
 Social Media and Data Mining
 
 ## Screenshots
