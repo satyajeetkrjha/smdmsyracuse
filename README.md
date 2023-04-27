@@ -1,4 +1,4 @@
-CIS 600 
+CIS 600
 Social Media and Data Mining
 
 ## Screenshots
@@ -11,12 +11,10 @@ Social Media and Data Mining
 
 ![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/Top5Pos.png)
 
+![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/CountrySpecSenti.png)
+
 ![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/AllWordCloud.png)
 
 ![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/NegWordCloud.png)
 
 ![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/PosWordCloud.png)
-
-
-
-
