@@ -82,7 +82,7 @@ class Country:
             batch_result = [get_country(location) for location in batch]
             return start_idx, batch_result
 
-        df_2 = df[0:10000].copy()
+        df_2 = df[0:].copy()
         df_2['Country'] = process_locations(df_2,10)
         df_1 = df.copy()
         # map the values in 'location' column to the corresponding country using the geocode_cache file
@@ -95,7 +95,7 @@ class Country:
         df_1['Country_name'] = df_1['Country'].map(country_dict).fillna(df_1['Country'])
         df_1 = df_1.drop(columns=['Country'])
         df_1 = df_1.rename(columns={'Country_name': 'Country'})
-        df_country_2 = df_2[['UserId','UserName','Verified','Followers','Retweeted','Language','Timestamp', 'Tweet', 'Country']].copy()
+        df_country_2 = df_2[['User','Timestamp', 'Tweet', 'Country']].copy()
 
         for i, row in df_country_2.iterrows():
             tweet_text = row['Country']
@@ -107,4 +107,3 @@ class Country:
             except:
                 pass
         df_country_2.to_csv('country.csv')
-

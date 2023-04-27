@@ -47,7 +47,7 @@ def preprocessing_tweets(tweet):
         # Remove missing values
         tweets_df.dropna(subset=['Timestamp'], inplace=True)
         # Filter to get only English tweets
-        tweets_df = tweets_df[tweets_df['Language'] == 'en'].reset_index(drop=True)
+        #tweets_df = tweets_df[tweets_df['Language'] == 'en'].reset_index(drop=True)
         # Filter to get only Known Country  tweets
         tweets_df = tweets_df[tweets_df['Country'] != 'Unknown'].reset_index(drop=True)
 
