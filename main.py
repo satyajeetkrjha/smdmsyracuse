@@ -152,7 +152,7 @@ def showCountryChart():
             negative_tweets.index.get_level_values('sentiment') == 'Negative'].sort_values(
             ascending=False).nlargest(5)
         print(negative_tweets)
-        negative_tweets.to_csv('/Users/kalyanibiradar/Documents/SMDM/Venv/bin/neg.csv')
+        negative_tweets.to_csv('neg.csv')
         df_neg = pd.read_csv('neg.csv')
 
         #Plot a bar graph
@@ -172,7 +172,7 @@ def showCountryChart():
             positive_tweets.index.get_level_values('sentiment') == 'Positive'].sort_values(
             ascending=False).nlargest(5)
         print(positive_tweets)
-        positive_tweets.to_csv('/Users/kalyanibiradar/Documents/SMDM/Venv/bin/pos.csv')
+        positive_tweets.to_csv('pos.csv')
         df_pos = pd.read_csv('pos.csv')
         # Plot a bar graph
         if df_pos.size > 0:
@@ -190,7 +190,7 @@ def showCountryChart():
         neutral_tweets = neutral_tweets[neutral_tweets.index.get_level_values('sentiment') == 'Neutral'].sort_values(
             ascending=False).nlargest(5)
         print(neutral_tweets)
-        neutral_tweets.to_csv('/Users/kalyanibiradar/Documents/SMDM/Venv/bin/neu.csv')
+        neutral_tweets.to_csv('neu.csv')
         df_neu = pd.read_csv('neu.csv')
         # Plot a bar graph
         if df_neu.size > 0:
