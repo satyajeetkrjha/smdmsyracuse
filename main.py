@@ -79,7 +79,8 @@ def preprocessing_tweets(tweet):
         print("An error occurred while Pre processing")
 
 
-def sentiment_analysis():
+def sentiment_emotion_analysis():
+    from nrclex import NRCLex
     def Subjectivity(tweet):
         return TextBlob(tweet).sentiment.subjectivity
 
@@ -97,6 +98,22 @@ def sentiment_analysis():
     tweets_df['subjectivity'] = tweets_df['Tweet'].apply(Subjectivity)
     tweets_df['polarity'] = tweets_df['Tweet'].apply(getPolarity)
     tweets_df['sentiment'] = tweets_df['polarity'].apply(get_Positive_Negative_Labelling)
+    tweets_df.to_csv('sentiment_analysis')
+
+    from nrclex import NRCLex
+    # all tweets are first converted into a string
+    alltweets = '.'.join(tweets_df['Tweet'])
+    textObject = NRCLex(alltweets)
+    data = textObject.raw_emotion_scores
+    emotion_df = pd.DataFrame.from_dict(data, orient='index')
+    emotion_df = emotion_df.reset_index()
+    emotion_df = emotion_df.rename(columns={'index': 'Emotion Classification', 0: 'Emotion Count'})
+    emotion_df = emotion_df.sort_values(by=['Emotion Count'], ascending=True)
+    import plotly.express as px
+    fig = px.bar(emotion_df, x='Emotion Count', y='Emotion Classification', color='Emotion Classification',
+                 orientation='h', width=600, height=400)
+    fig.show()
+
 
 
 
@@ -110,7 +127,7 @@ def getMostCommonWords():
 def ShowBarChart():
     figure ,ax = plt.subplots(figsize=(6,6))
     sns.countplot(x='sentiment', data=tweets_df)
-    ax.set_xlabel('Sentimens')
+    ax.set_xlabel('Sentiments')
     ax.set_ylabel('Percentage of each ')
     ax.set_title('Chatgpt based sentiment analysis Overall')
     plt.show()
@@ -263,10 +280,9 @@ def showSentimentCountryBased():
     except:
         print(f'Specified country, {input_country} has no tweets about chatGPT.')
 
-
 if __name__ == "__main__":
 
-    # read from csv first
+     # read from csv first
     country = Country()
     country.fetchCountry()
     tweets_df = pd.read_csv('country.csv')
@@ -275,7 +291,7 @@ if __name__ == "__main__":
     print("Total unique tweets are ", tweets_df.shape[0])
 
     tweets_df.Tweet = tweets_df['Tweet'].apply(preprocessing_tweets)
-    sentiment_analysis()
+    sentiment_emotion_analysis()
     ShowBarChart()
     top10Countries()
     showCountryChart()
@@ -284,9 +300,6 @@ if __name__ == "__main__":
     NegativeWordCloud()
     getMostCommonWords()
     showSentimentCountryBased()
-
-
-
 
 
 
