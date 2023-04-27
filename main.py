@@ -206,9 +206,6 @@ def showCountryChart():
     except:
         print("An error occurred while showing country graph")
 
-
-
-
 def wordCloud():
     tweets = " ".join(item for item in tweets_df['Tweet'])
     wc = WordCloud(background_color="white",
@@ -219,9 +216,6 @@ def wordCloud():
     plt.imshow(wc, interpolation='bilinear')
     plt.axis("off")
     plt.show()
-
-
-
 
 def PositiveWordCloud():
     positivetweets =tweets_df[tweets_df.sentiment == 'Positive']
@@ -248,6 +242,26 @@ def NegativeWordCloud():
     plt.axis("off")
     plt.show()
 
+def showSentimentCountryBased():
+    #fecthing the sentiments on chatGPT country based.
+    try:
+        input_country = input("Enter the Country you want to see the chatGPT trends for?")
+        tweets_df['date'] = pd.to_datetime(tweets_df['Timestamp'])
+        tweets_df['month'] = tweets_df['date'].dt.month_name()
+        month_order = tweets_df['month'].unique()
+        month_order = month_order[np.argsort(pd.to_datetime(month_order, format='%B').month)]
+        tweets_df['month'] = pd.Categorical(tweets_df['month'], categories=month_order, ordered=True)
+        df_sentiments = tweets_df[tweets_df['Country'] == input_country].groupby(['month', 'sentiment', ])[
+            'Tweet'].count().reset_index()
+        df = df_sentiments.pivot(index='month', columns='sentiment', values='Tweet').fillna(0)
+        xy = df.plot(figsize=(10, 6), linewidth=2, color=['green', 'red', 'grey'])
+        xy.set_xlabel('Month')
+        xy.set_ylabel('Sentiment Count')
+        xy.set_title(f'Sentiment Analysis of ChatGPT Tweets in {input_country} for 2023')
+        plt.show()
+
+    except:
+        print(f'Specified country, {input_country} has no tweets about chatGPT.')
 
 
 if __name__ == "__main__":
@@ -269,6 +283,7 @@ if __name__ == "__main__":
     PositiveWordCloud()
     NegativeWordCloud()
     getMostCommonWords()
+    showSentimentCountryBased()
 
 
 
