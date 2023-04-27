@@ -3,15 +3,19 @@ Social Media and Data Mining
 
 ## Screenshots
 
-![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/Figure_1.png)
+![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/Top10cCountries.png)
 
-![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/Figure_2.png)
+![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/Top5Neg.png)
 
-![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/Figure_3.png)
+![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/Top5Neutral.png)
 
-![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/Figure_4.png)
+![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/Top5Pos.png)
 
-![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/Figure_5.png)
+![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/AllWordCloud.png)
+
+![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/NegWordCloud.png)
+
+![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/PosWordCloud.png)
 
 
 
