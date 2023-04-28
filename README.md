@@ -42,3 +42,5 @@ Data Visualization: Graphically represent the extracted data
 ![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/NegWordCloud.png)
 
 ![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/PosWordCloud.png)
+
+![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/Screenshot%202023-04-28%20at%207.41.56%20PM.png)
