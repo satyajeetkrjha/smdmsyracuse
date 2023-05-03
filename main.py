@@ -271,21 +271,27 @@ def NegativeWordCloud():
 def showSentimentCountryBased():
     #fecthing the sentiments on chatGPT country based.
     try:
+        #taking the input from the user
         input_country = input("Enter the Country you want to see the chatGPT trends for?")
+        #extracting the date from the timestamp column in the dataframe
         tweets_df['date'] = pd.to_datetime(tweets_df['Timestamp'])
+        #getting the month from the date
         tweets_df['month'] = tweets_df['date'].dt.month_name()
         month_order = tweets_df['month'].unique()
         month_order = month_order[np.argsort(pd.to_datetime(month_order, format='%B').month)]
+        #sorting the month in order
         tweets_df['month'] = pd.Categorical(tweets_df['month'], categories=month_order, ordered=True)
+        #grouping the month, sentiment by tweet count for the country input from the user
         df_sentiments = tweets_df[tweets_df['Country'] == input_country].groupby(['month', 'sentiment', ])[
             'Tweet'].count().reset_index()
         df = df_sentiments.pivot(index='month', columns='sentiment', values='Tweet').fillna(0)
+        #plotting the graph with sentiment count on y-axis and months on x-axis.
         xy = df.plot(figsize=(10, 6), linewidth=2, color=['green', 'red', 'grey'])
         xy.set_xlabel('Month')
         xy.set_ylabel('Sentiment Count')
         xy.set_title(f'Sentiment Analysis of ChatGPT Tweets in {input_country} for 2023')
         plt.show()
-
+    #error handling if the user input country is not present in the dataframe.
     except:
         print(f'Specified country, {input_country} has no tweets about chatGPT.')
 
