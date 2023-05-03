@@ -8,6 +8,7 @@ from textblob import TextBlob
 import nltk
 import ssl
 from nltk.corpus import stopwords
+#from nrclex import NRCLex
 from country import Country
 
 
@@ -18,7 +19,7 @@ except AttributeError:
 else:
     ssl._create_default_https_context = _create_unverified_https_context
 
-#nltk.download()
+nltk.download()
 
 
 
@@ -29,6 +30,9 @@ from nltk.stem import PorterStemmer
 from nltk.corpus import stopwords
 stop_words = set(stopwords.words('english'))
 from wordcloud import WordCloud
+
+i=0
+count=0
 
 
 #dropping the
@@ -46,10 +50,13 @@ def preprocessing_tweets(tweet):
         tweets_df[tweets_df['Timestamp'].isna()]
         # Remove missing values
         tweets_df.dropna(subset=['Timestamp'], inplace=True)
-        # Filter to get only English tweets
-        #tweets_df = tweets_df[tweets_df['Language'] == 'en'].reset_index(drop=True)
+
+        # Check NA values and drop the records
+        tweets_df.dropna()
+
         # Filter to get only Known Country  tweets
         tweets_df = tweets_df[tweets_df['Country'] != 'Unknown'].reset_index(drop=True)
+
 
         # To Remove URL from tweet text
         tweets_df['Tweet'] = tweets_df['Tweet'].apply(lambda x: re.sub(r'((www\.[\S]+)|(https?://[\S]+))', '', x))
@@ -66,13 +73,14 @@ def preprocessing_tweets(tweet):
         def remove_emojis(tweet):
             return emoji.replace_emoji(tweet, replace=" ")
         #Converting tweets to lowercase
-        tweet = tweet.lower()
+        tweet = str(tweet).lower()
         tweet = tweet.strip(' "\'')
         tweet = remove_emojis(tweet)
         #Tokenizing the words
         tweet_tokens = word_tokenize(tweet)
         #Removing stopwords from tweets
         tweetsFilterted = [word for word in tweet_tokens if not word in stop_words]
+        print(tweets_df.shape)
         return " ".join(tweetsFilterted)
 
     except:
@@ -80,9 +88,9 @@ def preprocessing_tweets(tweet):
 
 
 def sentiment_emotion_analysis():
-    from nrclex import NRCLex
+
     def Subjectivity(tweet):
-        return TextBlob(tweet).sentiment.subjectivity
+        return TextBlob(str(tweet)).sentiment.subjectivity
 
     def get_Positive_Negative_Labelling(score):
         if score == 0:
@@ -93,12 +101,12 @@ def sentiment_emotion_analysis():
             return 'Positive'
 
     def getPolarity(tweet):
-        return TextBlob(tweet).sentiment.polarity
-
-    tweets_df['subjectivity'] = tweets_df['Tweet'].apply(Subjectivity)
-    tweets_df['polarity'] = tweets_df['Tweet'].apply(getPolarity)
-    tweets_df['sentiment'] = tweets_df['polarity'].apply(get_Positive_Negative_Labelling)
-    tweets_df.to_csv('sentiment_analysis')
+        return TextBlob(str(tweet)).sentiment.polarity
+    if not (tweets_df['Tweet'] is None):
+        tweets_df['subjectivity'] = tweets_df['Tweet'].apply(Subjectivity)
+        tweets_df['polarity'] = tweets_df['Tweet'].apply(getPolarity)
+        tweets_df['sentiment'] = tweets_df['polarity'].apply(get_Positive_Negative_Labelling)
+        tweets_df.to_csv('sentiment_analysis')
 
     from nrclex import NRCLex
     # all tweets are first converted into a string
@@ -224,6 +232,7 @@ def showCountryChart():
         print("An error occurred while showing country graph")
 
 def wordCloud():
+    tweets_df.Tweet= str(tweets_df['Tweet'])
     tweets = " ".join(item for item in tweets_df['Tweet'])
     wc = WordCloud(background_color="white",
                    max_words=500,
@@ -282,7 +291,7 @@ def showSentimentCountryBased():
 
 if __name__ == "__main__":
 
-     # read from csv first
+    #read from csv first
     country = Country()
     country.fetchCountry()
     tweets_df = pd.read_csv('country.csv')
