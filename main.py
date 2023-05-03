@@ -8,7 +8,7 @@ from textblob import TextBlob
 import nltk
 import ssl
 from nltk.corpus import stopwords
-#from nrclex import NRCLex
+from nrclex import NRCLex
 from country import Country
 
 
