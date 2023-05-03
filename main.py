@@ -31,14 +31,6 @@ from nltk.corpus import stopwords
 stop_words = set(stopwords.words('english'))
 from wordcloud import WordCloud
 
-i=0
-count=0
-
-
-#dropping the
-#tweets_df = df.drop(['UserId','UserName','Verified','Followers','Retweeted','Language'], axis=1)
-#print(tweets_df.columns)
-
 
 #Method to preprocess and clean the tweeter data
 def preprocessing_tweets(tweet):
@@ -80,7 +72,6 @@ def preprocessing_tweets(tweet):
         tweet_tokens = word_tokenize(tweet)
         #Removing stopwords from tweets
         tweetsFilterted = [word for word in tweet_tokens if not word in stop_words]
-        print(tweets_df.shape)
         return " ".join(tweetsFilterted)
 
     except:
