@@ -99,9 +99,17 @@ def sentiment_emotion_analysis():
         tweets_df['sentiment'] = tweets_df['polarity'].apply(get_Positive_Negative_Labelling)
         tweets_df.to_csv('sentiment_analysis')
 
+
+    def TweetString():
+        res =" "
+        for index in  range(0,len(tweets_df['Tweet'])):
+            res+= str(tweets_df['Tweet'][index])
+        return res
+
+
     from nrclex import NRCLex
     # all tweets are first converted into a string
-    alltweets = '.'.join(tweets_df['Tweet'])
+    alltweets = TweetString()
     textObject = NRCLex(alltweets)
     data = textObject.raw_emotion_scores
     emotion_df = pd.DataFrame.from_dict(data, orient='index')
@@ -127,7 +135,7 @@ def ShowBarChart():
     figure ,ax = plt.subplots(figsize=(6,6))
     sns.countplot(x='sentiment', data=tweets_df)
     ax.set_xlabel('Sentiments')
-    ax.set_ylabel('Percentage of each ')
+    ax.set_ylabel('Number of Tweets ')
     ax.set_title('Chatgpt based sentiment analysis Overall')
     plt.show()
 
@@ -297,6 +305,7 @@ if __name__ == "__main__":
     print("Total unique tweets are ", tweets_df.shape[0])
 
     tweets_df.Tweet = tweets_df['Tweet'].apply(preprocessing_tweets)
+
     sentiment_emotion_analysis()
     ShowBarChart()
     top10Countries()
@@ -306,8 +315,6 @@ if __name__ == "__main__":
     NegativeWordCloud()
     getMostCommonWords()
     showSentimentCountryBased()
-
-
 
 
 
