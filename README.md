@@ -37,6 +37,8 @@ Data Visualization: Graphically represent the extracted data
 
 ![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/Top5Pos.png)
 
+![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/overallsentiment.png)
+
 ![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/AllWordCloud.png)
 
 ![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/NegWordCloud.png)
