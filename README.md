@@ -39,6 +39,7 @@ Data Visualization: Graphically represent the extracted data
     pip install nltk
     pip install nrclex
     pip install geopy langdetect googletrans
+3.Run the main.py in any ide say Pycharm .   
 
 
 
