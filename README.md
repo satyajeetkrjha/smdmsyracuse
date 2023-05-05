@@ -47,7 +47,9 @@ Data Visualization: Graphically represent the extracted data
     pip install wordcloud
     pip install re
     pip install collections
-    pip install emoji
+    pip install emoji 
+    pip install plotly
+    
     
     
     
