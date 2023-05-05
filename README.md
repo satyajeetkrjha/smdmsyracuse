@@ -1,5 +1,8 @@
-CIS 600
-Social Media and Data Mining
+
+##Course Name: CIS 600 Social Media Data Mining
+##Project Name: A Corpus based study of Twitter Sentiments towards ChatGPT
+##Project By: Deepthi, Gagana, Kalyani, Rahul, Satyajeet, Sushmitha
+
 
 Sentiment Analysis on ChatGPT
 
