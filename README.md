@@ -52,8 +52,11 @@ Data Visualization: Graphically represent the extracted data
     
     
 3.After all the libraries are successfully installed, unzip the file and import the project. 
+
 4.Run main.py and 
+
 5.From nltk download popup download all
+
 6.GetMostreq.py to get The 10 most frequently most occurred words in Tweets and Identifying the most frequently discussed topic in twitter about ChatGPT
 
 
