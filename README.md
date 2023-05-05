@@ -41,7 +41,20 @@ Data Visualization: Graphically represent the extracted data
     pip install textblob
     pip install nltk
     pip install nrclex
-    pip install geopy langdetect googletrans
+    pip install geopy langdetect
+    pip install tqdm certifi 
+    pip install googletrans==3.1.0a0
+    pip install wordcloud
+    pip install re
+    pip install collections
+    pip install emoji
+After all the libraries are successfully installed, unzip the file and import the project. 
+Run main.py and 
+From nltk download popup download all.
+GetMostreq.py to get The 10 most frequently most occurred words in Tweets and Identifying the most frequently discussed topic in twitter about ChatGPT
+
+
+ 
 3.Run the main.py in any ide say Pycharm .   
 
 
