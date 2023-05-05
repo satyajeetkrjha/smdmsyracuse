@@ -25,6 +25,24 @@ Categorizing and Classifying : Classify tweets into positive, neutral, or negati
 
 Data Visualization: Graphically represent the extracted data
 
+## Installation Instructions
+
+1 .Clone the repo first from github .
+
+2 .After cloning ,you need to few pip installs to have all necessary tools .
+
+    pip install seaborn
+    pip install matplotlib
+    pip install numpy 
+    pip install pandas 
+    pip install textblob
+    pip install nltk
+    pip install nrclex
+    pip install geopy langdetect googletrans
+
+
+
+
 ## Screenshots
 
 ![App Screenshot](https://github.com/satyajeetkrjha/smdmsyracuse/blob/master/Top10cCountries.png)
